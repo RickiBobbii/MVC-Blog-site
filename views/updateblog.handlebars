@@ -1,17 +1,19 @@
+  
 <div class="col-md-6">
-    <h3>UPDATE Blog:</h3>
+    <h3>UPDATE Blog: {{name}}</h3>
 
-    <form class="form new-blog-form">
-      <div class="form-group">
+    <form class="form update-blog" data-id="{{id}}">
+    <div class="form-group">
         <label for="blog-name">Blog name:</label>
-        <textarea class="form-input" type="text" id="blog-name" name="blog-name">{{name}}</textarea>
-      </div>
-      <div class="form-group">
+        <input class="form-input" type="text" id="update-name" name="blog-name" value="{{name}}"/>
+    </div>
+    <div class="form-group">
         <label for="blog-desc">Description:</label>
-        <textarea class="form-input" id="blog-desc" name="blog-desc">{{description}}</textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary" data-id="{{blog.id}}">UPDATE</button>
-      </div>
+        <textarea class="form-input" id="update-desc" name="blog-desc">{{description}}</textarea>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">UPDATE</button>
+    </div>
     </form>
-  </div>
+</div>
+<script src="/js/update.js"></script>
