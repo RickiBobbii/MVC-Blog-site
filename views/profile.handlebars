@@ -29,11 +29,14 @@
 
     {{#each blogs as |blog|}}
     <div class="row mb-2">
-      <div class="col-md-8">
+      <div class="col-md-6">
         <h4><a href="/blog/{{blog.id}}">{{blog.name}}</a></h4>
       </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{blog.id}}">DELETE</button>
+      <div class="col-md-3">
+        <button class="btn btn-sm btn-link"><a href="/updateblog/{{blog.id}}" class="text-light" >UPDATE</a></button>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-sm btn-danger" data-id2="{{blog.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}

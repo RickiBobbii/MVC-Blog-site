@@ -21,9 +21,33 @@ const newFormHandler = async (event) => {
   }
 };
 
+// //UPDATE button handler
+// const updateButtonHandler = async (event) => {
+//   if (event.target.hasAttribute('data-id')) {
+//     const id = event.target.getAttribute('data-id');
+
+//     const response = await fetch(`/api/blogs/${id}`, {
+//       method: 'PUT',
+//       body: JSON.stringify({
+//         name,
+//         description,
+//       }),
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     });
+
+//     if (response.ok) {
+//       document.location.replace(`/blogs/${id}`);
+//     } else {
+//       alert('Failed to get blog');
+//     }
+//   }
+// };
+//DELETE button handler
 const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
+  if (event.target.hasAttribute('data-id2')) {
+    const id = event.target.getAttribute('data-id2');
 
     const response = await fetch(`/api/blogs/${id}`, {
       method: 'DELETE',
@@ -43,4 +67,9 @@ document
 
 document
   .querySelector('.blog-list')
+  .addEventListener('click', updateButtonHandler);
+
+  document
+  .querySelector('.blog-list')
   .addEventListener('click', delButtonHandler);
+
