@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
       // Serialize data so the template can read it
       const blogs = blogData.map((blog) => blog.get({ plain: true }));
   
-      // Pass serialized data and session flag into template
+      // render homepage template
       res.render('homepage', { 
         blogs, 
         logged_in: req.session.logged_in 
@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
       res.status(500).json(err);
     }
   });
-  
+  //GET one blog post and render
   router.get('/blog/:id', async (req, res) => {
     try {
       const blogData = await Blog.findByPk(req.params.id, {
@@ -39,13 +39,12 @@ router.get('/', async (req, res) => {
           },
           {
             model: Comment, include: [{ model: User}]
-            //attributes: ['description','date_created']
           }
         ],
       });
   
       const blog = blogData.get({ plain: true });
-  
+      
       res.render('blog', {
         ...blog,
         logged_in: req.session.logged_in
@@ -55,7 +54,7 @@ router.get('/', async (req, res) => {
     }
   });
   
-  // Use withAuth middleware to prevent access to route
+  // Use withAuth middleware to prevent access to route and render profile
   router.get('/profile', withAuth, async (req, res) => {
     try {
       // Find the logged in user based on the session ID

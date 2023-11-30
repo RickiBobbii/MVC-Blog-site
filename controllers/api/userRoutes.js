@@ -1,8 +1,7 @@
 const router = require('express').Router();
-//User for when User model is created
 const { User, Blog } = require('../../models');
 
-//Define api routes for User
+//api routes for User
 router.get('/', async (req, res) => {
     try {
       // Get all users, sorted by name
@@ -83,7 +82,7 @@ router.post('/', async (req, res) => {
       res.status(400).json(err);
     }
   });
-  
+  //Find user with posted name
   router.post('/login', async (req, res) => {
     try {
       const userData = await User.findOne({ where: { name: req.body.name } });
@@ -94,7 +93,7 @@ router.post('/', async (req, res) => {
           .json({ message: 'Incorrect username or password, please try again' });
         return;
       }
-  
+      //Verify password
       const validPassword = await userData.checkPassword(req.body.password);
   
       if (!validPassword) {
@@ -103,7 +102,7 @@ router.post('/', async (req, res) => {
           .json({ message: 'Incorrect username or password, please try again' });
         return;
       }
-  
+      //session variables for loggin in user
       req.session.save(() => {
         req.session.user_id = userData.id;
         req.session.logged_in = true;
@@ -118,6 +117,7 @@ router.post('/', async (req, res) => {
   
   router.post('/logout', (req, res) => {
     if (req.session.logged_in) {
+      //remove session variables
       req.session.destroy(() => {
         res.status(204).end();
       });
