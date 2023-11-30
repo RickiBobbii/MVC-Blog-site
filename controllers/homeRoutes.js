@@ -1,6 +1,6 @@
 const router = require('express').Router();
 // Import User model and withAuth 
-const { User, Blog } = require('../models');
+const { User, Blog, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 //Routes for User and Blog to connect to Handlebars

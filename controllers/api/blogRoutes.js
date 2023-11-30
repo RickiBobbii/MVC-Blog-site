@@ -67,6 +67,7 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });  
+//CREATE a blog withAuth
 router.post('/', withAuth, async (req, res) => {
   try {
     const newBlog = await Blog.create({
@@ -79,7 +80,7 @@ router.post('/', withAuth, async (req, res) => {
     res.status(400).json(err);
   }
 });
-
+//DELETE a blog withAuth
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const blogData = await Blog.destroy({
