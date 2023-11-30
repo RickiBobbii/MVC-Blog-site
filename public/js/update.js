@@ -1,7 +1,7 @@
 //UPDATE button handler
 const updateButtonHandler = async (event) => {
     event.preventDefault();
-    // if (event.target.hasAttribute('data-id')) {
+    
     const id = event.target.getAttribute('data-id');
     const name = document.querySelector('#update-name').value.trim();
     const description = document.querySelector('#update-desc').value.trim();
